@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Budget</title>
+        <!-- This is an SEO Change -->
+    <title>Free Personal Budget Management Website</title>
     <meta name="description" content="A free personal budger app">
     <meta name="keywords" content="app free budget finance">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
+    
+    <!-- This is an SEO Change -->
+    <link rel ="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-
-<a href="#main" class="skip">Skip to content</a>
+<!-- This is an A11y Change -->
+<a href="#main" class="skip" aria-label = "Skip to main content"class="skip">Skip to content</a>
+<!-- This is a Semantic HTML Change -->
 <header>
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/login.html">Login</a></li>
-            <li><a href="https://google.com">Google</a></li>
+                <!-- This is an SEO Change -->
+            <li><a href="https://google.com" aria-label="Go to Google Searching Engine">Google</a></li>
         </ul>
     </nav>
 </header>
@@ -30,6 +36,7 @@
     <main class="center" id="main">
 
         <div class="page-area">
+    <!-- This is a Semantic HTML Change  -->
 <section class ="page -area">
             <article>
                 <h1>Stay on track</h1>
@@ -87,18 +94,20 @@
                     because they know it is all good and accounted for.
                 </p>
             </article>
-    
-            <article>
-                <h1>Chart</h1>
-                <p>
-                    <canvas id="myChart" width="400" height="400"></canvas>
+    <!-- This is an A11y Change -->
+            <article aria-live = "polite">
+                <h2>Chart</h2>
+                <p id = "chart-description"> This Chart will show your budget in a pie chart.</p>
+                <p>  
+                      <!-- This is an A11y Change -->
+                    <canvas id="myChart" width="400" height="400" aria-descibedby="chart-description"></canvas>
                 </p>
             </article>
 
         </div>
 
     </main>
-        
+        <!-- This is a Semantic HTML Change -->
     <footer class="bottom">
         <div class ="center">
             All rights reserved &copy; Fabio Nolasco</div>
