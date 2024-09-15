@@ -168,7 +168,7 @@
 
                     }
                     createChart();
-                    createD3chart(res.data.budget);
+                    createD3chart(res.data.myBudget);
                 });
         }
 
@@ -176,7 +176,7 @@
         getBudget();
         function createD3chart(budgetData) {
 
-
+            console.log('here ' + budgetData);
             var svg = d3.select("body")
                 .append("svg")
                 .append("g")
@@ -195,7 +195,9 @@
             var pie = d3.pie()
                 .sort(null)
                 .value(function (d) {
-                    return d.value;
+                    console.log('here ' + d.budget);
+                    console.log('here ' + d.value);
+                    return d.budget;
                 });
 
             var arc = d3.arc()
@@ -207,6 +209,36 @@
                 .outerRadius(radius * 0.9);
 
             svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+            //var slice = svg.selectAll(".arc")
+              //  .data(pie(budgetData)).enter.append('g').attr('class', 'arc');
+
+                var slice = svg.select(".slices").selectAll("path.slice")
+                .data(pie(budgetData), key);
+
+            slice.enter()
+                .insert("path")
+                .style("fill", function (d) { return color(d.data.label); })
+                .attr("class", "slice");
+
+            slice
+                .transition().duration(1000)
+                .attrTween("d", function (d) {
+                    this._current = this._current || d;
+                    var interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+                    return function (t) {
+                        return arc(interpolate(t));
+                    };
+                })
+
+            slice.exit()
+                .remove();
+
+                
+                arc.append('path')
+                .attr('d', path)
+                .attr('fill', function (d) { return color(d.data.title); });
 
         }
 
@@ -225,7 +257,7 @@
             });
         }
 
-        change(randomData());
+       // change(randomData());
 
         d3.select(".randomize")
             .on("click", function () {
