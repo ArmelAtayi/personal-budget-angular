@@ -4,6 +4,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import{ LoginComponent } from './login/login.component';
 import{ AboutComponent } from './about/about.component';
 import{ P404Component } from './p404/p404.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
     path:'login',
     component: LoginComponent
   },
+  {
+    path:'breadcrumbs',
+    component: BreadcrumbsComponent
+  },
+
   {
     path:'**',
     component: P404Component
